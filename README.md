@@ -1,34 +1,37 @@
-# MirrorID
+# MirrorID 👁️👂👃
 
-MirrorID es una herramienta diseñada para [breve descripción del propósito o funcionalidad principal del proyecto].
+Sistema de reconocimiento facial que detecta rostros y características como ojos, nariz y orejas en tiempo real.
 
-## Características principales
+## 🔧 Requisitos
+- Python 3.8+
+- OpenCV
+- dlib
+- numpy
 
-- [Lista las características más importantes]
-- [Ejemplo: Generación de IDs únicos]
-- [Ejemplo: Espejo de identificadores entre sistemas]
-
-## Requisitos previos
-
-- [Lista de requisitos, ejemplos:]
-  - Python 3.x
-  - Librería XYZ
-
-## Instalación
-
+## 🚀 Instalación rápida
 ```bash
 git clone https://github.com/ivanbahe/mirrorid.git
 cd mirrorid
 pip install -r requirements.txt
+wget http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
+bunzip2 shape_predictor_68_face_landmarks.dat.bz2
+mv shape_predictor_68_face_landmarks.dat models/
 
-# Ejemplo básico de cómo usar el proyecto
-from mirrorid import generate_id
+▶️ Cómo usar
+bash
+# Usar con cámara web
+python mirrorid.py --video 0
 
-id = generate_id()
-print(f"ID generado: {id}")
+# Usar con archivo de video
+python mirrorid.py --video ruta/al/video.mp4
 
+📌 Ejemplo básico
+python
+from mirrorid import FaceDetector
 
-Notas:
-1. Deberás reemplazar los textos entre corchetes [] con la información real del proyecto
-2. Si necesitas secciones adicionales como "Roadmap", "FAQ" o "Ejemplos avanzados", puedes añadirlas
-3. Para un README más completo, considera añadir badges de CI, cobertura, versión, etc. si aplican
+detector = FaceDetector()
+results = detector.detect_faces(frame)
+
+for face in results:
+    print(f"Puntos de la cara: {face.landmarks}")
+    print(f"Ojos detectados: {face.eyes}")
