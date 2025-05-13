@@ -31,9 +31,3 @@ detector = FaceDetector()
 
 # Detectar rostros en un frame (ej. captura de OpenCV)  
 results = detector.detect_faces(frame)  
-
-# Iterar sobre resultados  
-for face in results:  
-    print(f"Landmarks completos: {face.landmarks}")  
-    print(f"Coordenadas de ojos: {face.eyes}")  
-    print(f"Coordenadas de nariz: {face.nose}")  
